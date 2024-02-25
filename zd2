@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+</head>
+<body>
+    <script>
+        class Time {
+    constructor(hours, minutes, seconds) {
+        this.hours = hours;
+        this.minutes = minutes;
+        this.seconds = seconds;
+    }
+
+    // Функція виведення часу на екран
+    displayTime() {
+        console.log(`Поточний час: ${this.hours} год. ${this.minutes} хв. ${this.seconds} сек.`);
+    }
+
+    // Функція зміни часу на передану кількість секунд
+    changeTimeBySeconds(seconds) {
+        this.seconds += seconds;
+
+        // Перевірка та корекція часу
+        this.normalizeTime();
+        this.displayTime();
+    }
+
+    // Функція зміни часу на передану кількість хвилин
+    changeTimeByMinutes(minutes) {
+        this.minutes += minutes;
+
+        // Перевірка та корекція часу
+        this.normalizeTime();
+        this.displayTime();
+    }
+
+    // Функція зміни часу на передану кількість годин
+    changeTimeByHours(hours) {
+        this.hours += hours;
+
+        // Перевірка та корекція часу
+        this.normalizeTime();
+        this.displayTime();
+    }
+
+    // Внутрішня функція для нормалізації часу (перетворення зайвих секунд та хвилин в години та хвилини)
+    normalizeTime() {
+        if (this.seconds >= 60) {
+            this.minutes += Math.floor(this.seconds / 60);
+            this.seconds %= 60;
+        }
+
+        if (this.minutes >= 60) {
+            this.hours += Math.floor(this.minutes / 60);
+            this.minutes %= 60;
+        }
+
+        if (this.hours >= 24) {
+            this.hours %= 24;
+        }
+    }
+}
+
+// Приклад використання об'єкта часу
+const currentTime = new Time(10, 30, 45);
+
+// Виведення поточного часу
+currentTime.displayTime();
+
+// Зміна часу за допомогою функцій
+currentTime.changeTimeBySeconds(120);
+currentTime.changeTimeByMinutes(75);
+currentTime.changeTimeByHours(5);
+    </script>
+</body>
+</html>
