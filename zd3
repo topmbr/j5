@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+</head>
+<body>
+    <script>
+        class Car {
+    constructor(manufacturer, model, year, averageSpeed) {
+        this.manufacturer = manufacturer;
+        this.model = model;
+        this.year = year;
+        this.averageSpeed = averageSpeed;
+    }
+
+    // Функція для виведення інформації про автомобіль на екран
+    displayCarInfo() {
+        console.log(`Автомобіль: ${this.manufacturer} ${this.model}, Рік випуску: ${this.year}, Середня швидкість: ${this.averageSpeed} км/год`);
+    }
+
+    // Функція для підрахунку часу подолання відстані з урахуванням перерв
+    calculateTravelTime(distance) {
+        const travelHours = distance / this.averageSpeed;
+        const breaksCount = Math.floor(travelHours / 4);
+
+        // Додаємо час на перерви
+        const totalTime = travelHours + breaksCount;
+
+        console.log(`Необхідний час для подолання ${distance} км: ${totalTime.toFixed(2)} годин`);
+    }
+}
+
+// Приклад використання об'єкта автомобіля
+const myCar = new Car('Toyota', 'Camry', 2022, 120);
+
+// Виведення інформації про автомобіль
+myCar.displayCarInfo();
+
+// Підрахунок часу подолання відстані
+myCar.calculateTravelTime(300);
+    </script>
+</body>
+</html>
